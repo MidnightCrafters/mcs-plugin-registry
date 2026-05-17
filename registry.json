@@ -4,13 +4,13 @@
     {
       "id": "community.docstats",
       "name": "Document Stats",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "apiVersion": "1.0",
-      "description": "A live dock panel with document statistics: object count, per-layer breakdown, selection size, and total cut area.",
+      "description": "A live dock panel with document statistics: object count, visible count, per-layer breakdown, selection size, and total cut area.",
       "author": "MidnightCrafters",
       "permissions": [],
-      "downloadUrl": "https://github.com/MidnightCrafters/mcs-plugin-wordcount/releases/download/v1.0.0/mcs-plugin-wordcount.mcsplugin",
-      "sha256": "c9c4adaac60caf5321e5435e03c1f8076992bfae7a6bf0a6b8f55b1ed8c948c5",
+      "downloadUrl": "https://github.com/MidnightCrafters/mcs-plugin-wordcount/releases/download/v1.1.0/mcs-plugin-wordcount.mcsplugin",
+      "sha256": "7572f09a081ea0aea218a91434a1d6a4cd7f7420128feeeb7f990e371b25e0c1",
       "homepage": "https://github.com/MidnightCrafters/mcs-plugin-wordcount"
     }
   ]
