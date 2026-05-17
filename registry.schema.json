@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/MidnightCrafters/mcs-plugin-registry/main/registry.schema.json",
+  "title": "Midnight Cutter Studio plugin registry",
+  "description": "Curated index of community plugins installable from inside Midnight Cutter Studio.",
+  "type": "object",
+  "required": ["version", "plugins"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "description": "Registry document schema version.",
+      "type": "integer",
+      "const": 1
+    },
+    "plugins": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/entry" }
+    }
+  },
+  "definitions": {
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "version",
+        "apiVersion",
+        "description",
+        "downloadUrl",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "description": "Stable plugin id; matches manifest.id. Used as the install directory name.",
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "name": { "type": "string", "minLength": 1 },
+        "version": {
+          "description": "Semver of this release (x.y.z).",
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+([-+].+)?$"
+        },
+        "apiVersion": {
+          "description": "Plugin-API contract the plugin was built against (major.minor).",
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+$"
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "author": { "type": "string" },
+        "permissions": {
+          "description": "Capabilities the plugin requests; the app shows a consent dialog for these on install.",
+          "type": "array",
+          "items": {
+            "enum": ["network", "fs:read", "fs:write", "shell:execute"]
+          },
+          "uniqueItems": true
+        },
+        "downloadUrl": {
+          "description": "HTTPS URL of the .mcsplugin archive (e.g. a GitHub release asset).",
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "sha256": {
+          "description": "Lowercase hex SHA-256 of the .mcsplugin archive; verified before unpack.",
+          "type": "string",
+          "pattern": "^[A-Fa-f0-9]{64}$"
+        },
+        "iconUrl": {
+          "description": "Optional HTTPS URL of a small display icon.",
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "homepage": {
+          "description": "Optional project/source URL.",
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        }
+      }
+    }
+  }
+}
